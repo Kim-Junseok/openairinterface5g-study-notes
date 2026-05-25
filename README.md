@@ -28,6 +28,7 @@ Creating a new branch inside the OAI repository is appropriate when preparing ac
 
 ```text
 openairinterface5g-study-notes/
+├── AGENTS.md
 ├── README.md
 ├── docs/
 │   ├── 00-overview/
@@ -50,6 +51,18 @@ openairinterface5g-study-notes/
 └── scripts/
 ```
 
+## Companion Repositories
+
+This repository is the output workspace. It uses the local OAI checkout and interview-prep notes as references:
+
+| Repository | Local path | Usage |
+| --- | --- | --- |
+| `openairinterface5g` | `/home/jjuns/ran-code/openairinterface5g` | Source-code evidence |
+| `interview-prep` | `/home/jjuns/interview-prep` | Study prompts and interview framing |
+| `openairinterface5g-study-notes` | `/home/jjuns/ran-code/openairinterface5g-study-notes` | Markdown and PlantUML outputs |
+
+See [AGENTS.md](AGENTS.md) for the working rules used when converting code-reading prompts into notes and diagrams.
+
 ## Writing Rules
 
 - Add `Source baseline`, `Related paths`, and `Status` near the top of each document.
@@ -57,6 +70,7 @@ openairinterface5g-study-notes/
 - Mark assumptions as `Hypothesis` and separate them from `Verified` findings.
 - For execution logs, record key commands, environment details, results, and failure causes.
 - When summarizing upstream OAI documentation, include the original link or local path.
+- Use PlantUML files under `diagrams/` for message sequence charts, component diagrams, activity diagrams, and state flows.
 
 ## First Reading Order
 

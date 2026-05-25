@@ -1,0 +1,35 @@
+@startuml X5G/OAI Slot Scheduling Path
+title X5G/OAI Slot Scheduling Path
+
+autonumber
+participant "Aerial PHY" as AerialPHY
+participant "Aerial nvIPC" as NvIPC
+participant "OAI nFAPI VNF" as VNF
+participant "NR IF Module" as NRIF
+participant "NR gNB MAC Scheduler" as Scheduler
+
+' Source anchors:
+' - nfapi/oai_integration/aerial/fapi_nvIPC.c
+' - nfapi/oai_integration/nfapi_vnf.c:phy_nr_slot_indication
+' - openair2/NR_PHY_INTERFACE/NR_IF_Module.c:run_scheduler_monolithic
+' - openair2/LAYER2/NR_MAC_gNB/gNB_scheduler.c:gNB_dlsch_ulsch_scheduler
+
+AerialPHY -> NvIPC: NFAPI_NR_PHY_MSG_TYPE_SLOT_INDICATION
+NvIPC -> VNF: P7 slot indication callback
+VNF -> NRIF: ifi->NR_slot_indication(ind, &sched_response)
+NRIF -> Scheduler: gNB_dlsch_ulsch_scheduler(frame, slot, rsp)
+Scheduler --> NRIF: Fill NR_Sched_Rsp_t
+NRIF --> VNF: DL_req, UL_tti_req, UL_dci_req, TX_req
+
+group Aerial request return path
+  VNF -> NvIPC: oai_fapi_dl_tti_req(DL_req)
+  VNF -> NvIPC: oai_fapi_ul_tti_req(UL_tti_req)
+  VNF -> NvIPC: oai_fapi_ul_dci_req(UL_dci_req)
+  VNF -> NvIPC: oai_fapi_tx_data_req(TX_req)
+  VNF -> NvIPC: oai_fapi_send_end_request(frame, slot)
+end
+
+NvIPC -> AerialPHY: DL_TTI / UL_TTI / UL_DCI / TX_DATA
+
+@enduml
+

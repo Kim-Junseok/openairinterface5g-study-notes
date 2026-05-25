@@ -1,0 +1,39 @@
+@startuml DL HARQ ACK/NACK Feedback Flow
+title DL HARQ ACK/NACK Feedback Flow
+
+start
+:DL scheduler selects HARQ process;
+:Reserve PUCCH ACK/NACK occasion;
+:Add HARQ pid to feedback_dl_harq;
+:UCI PUCCH indication arrives;
+:find_harq(frame, slot, UE);
+
+if (HARQ process found?) then (yes)
+  :Remove pid from feedback_dl_harq;
+  if (ACK with confidence OK?) then (ACK)
+    :handle_dl_harq(success=true);
+    :finish_nr_dl_harq();
+  else (NACK or unreliable)
+    if (round max reached?) then (yes)
+      :abort_nr_dl_harq();
+    else (no)
+      :Add pid to retrans_dl_harq;
+      :Increment HARQ round;
+    endif
+  endif
+else (no)
+  :Log missing HARQ feedback context;
+endif
+
+stop
+
+' Source anchors:
+' - openair2/LAYER2/NR_MAC_gNB/gNB_scheduler_dlsch.c:nr_schedule_ue_spec
+' - openair2/LAYER2/NR_MAC_gNB/gNB_scheduler_dlsch.c:nr_acknack_scheduling call sites
+' - openair2/LAYER2/NR_MAC_gNB/gNB_scheduler_uci.c:find_harq
+' - openair2/LAYER2/NR_MAC_gNB/gNB_scheduler_uci.c:handle_dl_harq
+' - openair2/LAYER2/NR_MAC_gNB/nr_mac_gNB.h:feedback_dl_harq
+' - openair2/LAYER2/NR_MAC_gNB/nr_mac_gNB.h:retrans_dl_harq
+
+@enduml
+

@@ -1,0 +1,18 @@
+@startuml
+title <activity title>
+
+start
+:<first action>;
+if (<condition>) then (yes)
+  :<action>;
+else (no)
+  :<alternative>;
+endif
+:<final action>;
+stop
+
+' Source anchors:
+' - path/to/file.c:function_name
+
+@enduml
+

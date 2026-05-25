@@ -4,6 +4,10 @@ Status: draft
 Source baseline: `<repo>@<commit>`  
 Related paths: `<path>`
 
+## Diagram
+
+PlantUML: `<relative/path/to/diagram.puml>`
+
 ## Trigger
 
 ## Participants
@@ -30,5 +34,10 @@ Related paths: `<path>`
 
 ## Failure Modes
 
-## References
+## Evidence
 
+| Claim | Source |
+| --- | --- |
+| TBD | TBD |
+
+## References

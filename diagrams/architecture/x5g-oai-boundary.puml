@@ -1,0 +1,42 @@
+@startuml X5G/OAI Boundary
+!pragma layout smetana
+title X5G/OAI Boundary
+
+left to right direction
+skinparam componentStyle rectangle
+skinparam nodesep 25
+skinparam ranksep 25
+skinparam defaultTextAlignment center
+
+package "Aerial / PHY" {
+  component "NVIDIA Aerial\nDU-low PHY" as Aerial
+  component "Aerial\nnvIPC" as NvIPC
+  Aerial -down-> NvIPC : indications\nrequests
+}
+
+package "OAI DU-high" {
+  component "OAI nFAPI\nVNF" as VNF
+  component "NR IF\nModule" as NRIF
+  component "NR gNB MAC\nScheduler" as MAC
+  VNF -down-> NRIF : slot/UL\nind.
+  NRIF -down-> MAC : sched.\nrsp
+}
+
+package "Upper L2" {
+  component "NR RLC" as RLC
+  component "NR PDCP" as PDCP
+  component "SDAP" as SDAP
+  RLC -down-> PDCP : SDU path
+  PDCP -down-> SDAP : QoS / DRB mapping
+}
+
+' Source anchors:
+' - fapi_nvIPC.c sends/receives FAPI messages through nvIPC.
+' - nfapi_vnf.c:phy_nr_slot_indication calls NR_slot_indication and sends scheduler outputs.
+' - NR_IF_Module.h defines NR_Sched_Rsp_t.
+' - gNB_scheduler.c orchestrates per-slot scheduling.
+
+NvIPC -right-> VNF : P7 messages
+MAC -right-> RLC : buffer\nstatus
+
+@enduml
