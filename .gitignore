@@ -1,0 +1,15 @@
+.DS_Store
+*.swp
+*.swo
+*.tmp
+*.log
+
+# Local exports and generated artifacts
+exports/
+build/
+dist/
+
+# Editor metadata
+.idea/
+.vscode/
+*.code-workspace
