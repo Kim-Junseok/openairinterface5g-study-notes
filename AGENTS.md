@@ -72,12 +72,13 @@ Place files as follows:
 
 | Artifact | Location |
 | --- | --- |
-| Code-reading notes | `docs/05-code-reading/` |
-| RAN stack module notes | `docs/03-ran-stack/` |
+| Code-reading notes | `docs/01-code-reading/` |
+| Simulation notes | `docs/02-simulation/` |
+| Unit-test notes | `docs/03-unit-test-lab/` |
+| Reference notes | `docs/99-references/` |
 | Architecture diagrams | `diagrams/architecture/*.puml` |
 | Message sequence charts | `diagrams/sequence/*.puml` |
 | Call-flow or state diagrams | `diagrams/call-flows/*.puml` |
-| Reusable templates | `templates/` |
 
 ## Evidence Style
 

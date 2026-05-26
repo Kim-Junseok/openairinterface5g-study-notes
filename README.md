@@ -66,22 +66,21 @@ See [source-baseline.md](docs/99-references/source-baseline.md) for baseline tra
 
 ## How To Use This Repository
 
-Start here if you are new to OAI:
+This repository is now organized around the assumption that you do not have RF hardware or a complete external testbed yet.
 
 | Step | Read | Purpose |
 | --- | --- | --- |
-| 1 | [Repository Map](docs/00-overview/repository-map.md) | Learn the top-level OAI source tree |
-| 2 | [System Architecture](docs/02-architecture/system-architecture.md) | Build a first mental model of OAI layers |
-| 3 | [Build Notes](docs/01-build-and-run/build-notes.md) | Track build commands and local verification |
-| 4 | [RAN Stack Index](docs/03-ran-stack/README.md) | Choose a RAN layer to study next |
-| 5 | [Code Reading Plan](docs/05-code-reading/reading-plan.md) | Convert source-code reading into notes |
-| 6 | [Glossary](docs/99-references/glossary.md) | Keep terminology close while reading |
+| 1 | [No-testbed study plan](docs/README.md) | Understand the current learning strategy |
+| 2 | [Code Reading](docs/01-code-reading/README.md) | Start from source anchors instead of trying to run a full setup |
+| 3 | [X5G/OAI Code Map](docs/01-code-reading/x5g-oai-code-map.md) | Follow the first concrete OAI path: FAPI/nFAPI to NR gNB MAC scheduler |
+| 4 | [Simulation](docs/02-simulation/README.md) | Identify runnable OAI simulation paths that do not need RF hardware |
+| 5 | [Unit Test Lab](docs/03-unit-test-lab/README.md) | Use existing `ctest` tests and evaluate temporary local tests |
+| 6 | [OAI Reference Map](docs/99-references/oai-reference-map.md) | Keep official docs and source areas close |
 
-Start here if your focus is X5G, Aerial, FAPI/nFAPI, or NR gNB MAC scheduling:
+Current diagrams:
 
-| Topic | Read |
+| Diagram | Read |
 | --- | --- |
-| X5G/OAI code map | [x5g-oai-code-map.md](docs/05-code-reading/x5g-oai-code-map.md) |
 | OAI/Aerial boundary | [x5g-oai-boundary.puml](diagrams/architecture/x5g-oai-boundary.puml) |
 | Slot scheduling sequence | [slot-scheduling-path.puml](diagrams/sequence/slot-scheduling-path.puml) |
 | DL HARQ feedback flow | [dl-harq-feedback.puml](diagrams/call-flows/dl-harq-feedback.puml) |
@@ -109,7 +108,7 @@ Official reference:
 
 ## Building OAI
 
-For reading-only work, you can start without building. For runtime behavior, logs, and experiments, follow the official build docs first.
+For reading-only work, you can start without building. For simulation and unit-test work, follow the official build docs first.
 
 The current OAI documentation recommends direct CMake/Ninja builds for a default build:
 
@@ -127,7 +126,7 @@ cd openairinterface5g/cmake_targets
 ./build_oai --ninja --gNB --nrUE
 ```
 
-The exact command depends on your target: RF simulator, USRP, gNB-only, nrUE, CU/DU split, Aerial, or other setups.
+The exact command depends on your target: unit tests, physims, RF simulator, USRP, gNB-only, nrUE, CU/DU split, Aerial, or other setups.
 
 Official references:
 
@@ -157,12 +156,7 @@ For each source file or module, capture:
 - Logs or trace points.
 - Open questions.
 
-Templates:
-
-- [module-note.md](templates/module-note.md)
-- [source-file-note.md](templates/source-file-note.md)
-- [call-flow.md](templates/call-flow.md)
-- [experiment-log.md](templates/experiment-log.md)
+This repo intentionally keeps the document structure small. For now, prefer adding focused notes under `docs/01-code-reading/`, `docs/02-simulation/`, or `docs/03-unit-test-lab/` instead of creating broad placeholder documents.
 
 ## Diagram Policy
 
@@ -182,12 +176,6 @@ Component diagrams include:
 
 This avoids a hard dependency on Graphviz `dot` for local preview. If your PlantUML setup supports Graphviz and you prefer its layout, you can remove that pragma in a local experiment.
 
-PlantUML templates:
-
-- [plantuml-component.puml](templates/plantuml-component.puml)
-- [plantuml-sequence.puml](templates/plantuml-sequence.puml)
-- [plantuml-activity.puml](templates/plantuml-activity.puml)
-
 ## Repository Structure
 
 ```text
@@ -195,13 +183,10 @@ openairinterface5g-study-notes/
 ├── AGENTS.md
 ├── README.md
 ├── docs/
-│   ├── 00-overview/
-│   ├── 01-build-and-run/
-│   ├── 02-architecture/
-│   ├── 03-ran-stack/
-│   ├── 04-deployment/
-│   ├── 05-code-reading/
-│   ├── 06-experiments/
+│   ├── README.md
+│   ├── 01-code-reading/
+│   ├── 02-simulation/
+│   ├── 03-unit-test-lab/
 │   └── 99-references/
 ├── diagrams/
 │   ├── architecture/
@@ -209,9 +194,8 @@ openairinterface5g-study-notes/
 │   └── sequence/
 ├── assets/
 │   └── images/
-├── notes/
-│   └── daily/
-└── templates/
+└── notes/
+    └── daily/
 ```
 
 ## Suggested First Reading Paths
@@ -222,8 +206,8 @@ openairinterface5g-study-notes/
 2. `doc/README.md`
 3. `doc/BUILD.md`
 4. `README.md` in the OAI source root
-5. [repository-map.md](docs/00-overview/repository-map.md)
-6. [system-architecture.md](docs/02-architecture/system-architecture.md)
+5. [docs/README.md](docs/README.md)
+6. [Code Reading](docs/01-code-reading/README.md)
 
 ### NR gNB MAC Scheduler
 
@@ -239,7 +223,7 @@ openairinterface5g-study-notes/
 2. `nfapi/oai_integration/aerial/fapi_nvIPC.c`
 3. `openair2/NR_PHY_INTERFACE/NR_IF_Module.h`
 4. `openair2/NR_PHY_INTERFACE/NR_IF_Module.c`
-5. [x5g-oai-code-map.md](docs/05-code-reading/x5g-oai-code-map.md)
+5. [x5g-oai-code-map.md](docs/01-code-reading/x5g-oai-code-map.md)
 
 ## Official OAI References
 
