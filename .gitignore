@@ -8,6 +8,7 @@
 exports/
 build/
 dist/
+templates/
 
 # Editor metadata
 .idea/
