@@ -7,7 +7,7 @@ It is written for two audiences:
 - People who are opening the OAI 5G source tree for the first time.
 - People who want code-level notes, diagrams, and reading paths for selected OAI RAN topics such as NR gNB MAC scheduling, FAPI/nFAPI, Aerial integration, HARQ, RLC, PDCP, and SDAP.
 
-This is not an official OpenAirInterface repository. Use the official OAI documentation as the source of truth for installation, build, run, and contribution rules. Use this repository as a reading guide and annotation layer.
+This is not an official OpenAirInterface repository. Use the official OAI documentation as the source of truth for installation, build, run, and contribution rules. **Use this repository as a reading guide and annotation layer.**
 
 ## Quick Start
 
@@ -71,11 +71,12 @@ This repository is now organized around the assumption that you do not have RF h
 | Step | Read | Purpose |
 | --- | --- | --- |
 | 1 | [No-testbed study plan](docs/README.md) | Understand the current learning strategy |
-| 2 | [Code Reading](docs/01-code-reading/README.md) | Start from source anchors instead of trying to run a full setup |
-| 3 | [X5G/OAI Code Map](docs/01-code-reading/x5g-oai-code-map.md) | Follow the first concrete OAI path: FAPI/nFAPI to NR gNB MAC scheduler |
-| 4 | [Simulation](docs/02-simulation/README.md) | Identify runnable OAI simulation paths that do not need RF hardware |
-| 5 | [Unit Test Lab](docs/03-unit-test-lab/README.md) | Use existing `ctest` tests and evaluate temporary local tests |
-| 6 | [OAI Reference Map](docs/99-references/oai-reference-map.md) | Keep official docs and source areas close |
+| 2 | [Local Environment](docs/00-local-environment/README.md) | Prepare editor support for source-level reading |
+| 3 | [Code Reading](docs/01-code-reading/README.md) | Start from source anchors instead of trying to run a full setup |
+| 4 | [X5G/OAI Code Map](docs/01-code-reading/x5g-oai-code-map.md) | Follow the first concrete OAI path: FAPI/nFAPI to NR gNB MAC scheduler |
+| 5 | [Simulation](docs/02-simulation/README.md) | Identify runnable OAI simulation paths that do not need RF hardware |
+| 6 | [Unit Test Lab](docs/03-unit-test-lab/README.md) | Use existing `ctest` tests and evaluate temporary local tests |
+| 7 | [OAI Reference Map](docs/99-references/oai-reference-map.md) | Keep official docs and source areas close |
 
 Current diagrams:
 
@@ -184,6 +185,7 @@ openairinterface5g-study-notes/
 ├── README.md
 ├── docs/
 │   ├── README.md
+│   ├── 00-local-environment/
 │   ├── 01-code-reading/
 │   ├── 02-simulation/
 │   ├── 03-unit-test-lab/
@@ -192,10 +194,8 @@ openairinterface5g-study-notes/
 │   ├── architecture/
 │   ├── call-flows/
 │   └── sequence/
-├── assets/
-│   └── images/
-└── notes/
-    └── daily/
+└── assets/
+    └── images/
 ```
 
 ## Suggested First Reading Paths
@@ -207,7 +207,8 @@ openairinterface5g-study-notes/
 3. `doc/BUILD.md`
 4. `README.md` in the OAI source root
 5. [docs/README.md](docs/README.md)
-6. [Code Reading](docs/01-code-reading/README.md)
+6. [Local Environment](docs/00-local-environment/README.md)
+7. [Code Reading](docs/01-code-reading/README.md)
 
 ### NR gNB MAC Scheduler
 

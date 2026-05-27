@@ -21,6 +21,9 @@ This repository does not try to replace official OAI documentation. It adds a co
 ```text
 docs/
 ├── README.md
+├── 00-local-environment/
+│   ├── README.md
+│   └── vscode-cmake-intellisense.md
 ├── 01-code-reading/
 │   ├── README.md
 │   └── x5g-oai-code-map.md
@@ -37,10 +40,11 @@ docs/
 
 | Order | Area | Goal |
 | --- | --- | --- |
-| 1 | [Code Reading](01-code-reading/README.md) | Build a reliable map of OAI source paths before trying to run anything |
-| 2 | [Simulation](02-simulation/README.md) | Identify OAI-provided runnable paths that do not need RF hardware |
-| 3 | [Unit Test Lab](03-unit-test-lab/README.md) | Use existing `ctest` tests and evaluate small temporary tests |
-| 4 | [References](99-references/oai-reference-map.md) | Keep official docs and local baselines close |
+| 1 | [Local Environment](00-local-environment/README.md) | Prepare editor support for source-level reading |
+| 2 | [Code Reading](01-code-reading/README.md) | Build a reliable map of OAI source paths before trying to run anything |
+| 3 | [Simulation](02-simulation/README.md) | Identify OAI-provided runnable paths that do not need RF hardware |
+| 4 | [Unit Test Lab](03-unit-test-lab/README.md) | Use existing `ctest` tests and evaluate small temporary tests |
+| 5 | [References](99-references/oai-reference-map.md) | Keep official docs and local baselines close |
 
 ## Current Study Bias
 
@@ -62,4 +66,3 @@ The current priority is code reading, especially:
 - Full CU/DU/RIC protocol coverage.
 
 Those can become separate phases later.
-
