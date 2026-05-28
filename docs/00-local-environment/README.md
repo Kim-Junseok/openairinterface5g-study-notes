@@ -14,3 +14,8 @@ The goal is not to replace the official OAI build guide. The goal is to make cod
 
 Start with [VS Code CMake IntelliSense Setup](vscode-cmake-intellisense.md) if the editor shows many red squiggles after installing the C/C++ extension pack.
 
+Then use these short notes as local maintenance checklists:
+
+| Note | Use when |
+| --- | --- |
+| [Ubuntu Package Baseline](ubuntu-package-baseline.md) | Recording host packages added to make OAI configure/build and editor analysis work. |
