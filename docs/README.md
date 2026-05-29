@@ -22,9 +22,7 @@ This repository does not try to replace official OAI documentation. It adds a co
 docs/
 ├── README.md
 ├── 00-local-environment/
-│   ├── README.md
-│   ├── ubuntu-package-baseline.md
-│   └── vscode-cmake-intellisense.md
+│   └── README.md
 ├── 01-code-reading/
 │   ├── README.md
 │   └── x5g-oai-code-map.md
